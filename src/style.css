@@ -1,0 +1,27 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+body {
+  background-color: #0000ff;
+  font-family: 'Lora', serif;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+.full-form {
+  color: white;
+  background-color: rgba(0, 0, 255, 0.473);
+  border: 1px solid white;
+  border-radius: 10px;
+  margin-top: 10vh;
+}
+.btn {
+  background-color: white;
+  color: blue;
+  font-weight: 900;
+}
+.btn a {
+  color: inherit;
+  font-weight: inherit;
+}
