@@ -11,7 +11,7 @@ export default function App() {
     <div>
       <Router>
         <Switch>
-          <Route path="/signup" exact>
+          <Route path="/signup">
             <SignUp />
           </Route>
           <Route path="/login">

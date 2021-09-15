@@ -2,11 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 
 body {
-  background: #d0d5da;
   font-family: 'Lora', serif;
+  background: #d0d5da;
 }
+.form-bg {
+}
+
 a {
   text-decoration: none;
+  color: 0d6efd;
 }
 .full-form {
   color: rgb(68, 66, 66);

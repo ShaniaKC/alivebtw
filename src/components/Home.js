@@ -1,9 +1,14 @@
 import React from 'react';
 
+import Navbar from './Navbar';
+
 const Home = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
+    <div className="container-fluid">
+      <Navbar />
+      <div className="container mt-5">
+        <h1 className="display-5 text-white">Alive Botswana</h1>
+      </div>
     </div>
   );
 };
