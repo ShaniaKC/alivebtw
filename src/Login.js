@@ -18,9 +18,8 @@ const Login = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    //http://localhost:8080/users/signin
     axios
-      .post('https://jsonplaceholder.typicode.com/use', {
+      .post('http://localhost:8080/users/signin', {
         username: formData.username,
         password: formData.password
       })
@@ -37,7 +36,7 @@ const Login = () => {
       <div className="row">
         <form
           onSubmit={handleSubmit}
-          className="full-form col-sm-6 col-10 offset-sm-3 offset-1  px-md-5 py-5"
+          className="full-form col-sm-6 col-10 offset-sm-3 offset-1 mt-5 px-md-5 py-5"
         >
           <h1 className="text-center">Login</h1>
           <div className="mb-3">
@@ -49,7 +48,8 @@ const Login = () => {
               name="username"
               onChange={handleChange}
               value={formData.username}
-              className="form-control"
+              placeholder="John Doe Mann"
+              className="form-control py-3"
               required
             />
           </div>
@@ -62,16 +62,15 @@ const Login = () => {
               name="password"
               onChange={handleChange}
               value={formData.password}
-              className="form-control"
+              placeholder="*******"
+              className="form-control py-3"
               required
             />
           </div>
-          <div className="row">
-            <button className="btn btn-primary col-4 offset-1">Login</button>
-            <p className="col-7 mt-1">
-              Not yet a member? <Link to="/">Sign Up</Link>
-            </p>
-          </div>
+          <button className="btn btn-primary col-12 py-3 mt-1">Login</button>
+          <p className="col-12 mt-3 mb-1 text-center">
+            Not yet a member? <Link to="/">SignUp</Link>
+          </p>
         </form>
       </div>
       {isLoggedIn && (
@@ -79,11 +78,11 @@ const Login = () => {
           Logged in successfully
         </div>
       )}
-      {error !== '' && (
+      {/* {error !== '' && (
         <div className="text-center h4 mt-3 text-light">
           Couldn't Sign you in
         </div>
-      )}
+      )} */}
     </div>
   );
 };

@@ -17,9 +17,9 @@ const SignUp = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    //http://localhost:8080/users/signup
+    
     axios
-      .post('https://jsonplaceholder.typicode.com/users', {
+      .post('http://localhost:8080/users/signup', {
         username: formData.username,
         password: formData.password,
         email: formData.email
@@ -34,7 +34,7 @@ const SignUp = () => {
       <div className="row">
         <form
           onSubmit={handleSubmit}
-          className="full-form col-sm-6 col-10 offset-sm-3 offset-1 px-md-5 py-5"
+          className="full-form col-sm-6 col-10 offset-sm-3 mt-3 offset-1 px-md-5 py-5"
         >
           <h1 className="text-center">Sign Up</h1>
           <div className="mb-3">
@@ -46,7 +46,8 @@ const SignUp = () => {
               name="username"
               onChange={handleChange}
               value={formData.username}
-              className="form-control"
+              placeholder="John Doe Mann"
+              className="form-control py-3"
               required
             />
           </div>
@@ -59,7 +60,8 @@ const SignUp = () => {
               name="email"
               onChange={handleChange}
               value={formData.email}
-              className="form-control"
+              placeholder="user@email.com"
+              className="form-control py-3"
               required
             />
           </div>
@@ -72,26 +74,26 @@ const SignUp = () => {
               name="password"
               onChange={handleChange}
               value={formData.password}
-              className="form-control"
+              placeholder="*******"
+              className="form-control py-3"
               required
             />
           </div>
-          <div className="row">
-            <button className="btn btn-primary col-4 offset-1">SignUp</button>
-            <p className="col-6 mt-1">
-              Already a member? <Link to="/login">Login</Link>
-            </p>
-          </div>
+
+          <button className="btn btn-primary col-12 py-3 mt-1">SignUp</button>
+          <p className="col-12 mt-3 mb-1 text-center">
+            Already a member? <Link to="/login">Login</Link>
+          </p>
         </form>
       </div>
-      {isSignedUp && (
+      {/* {isSignedUp && (
         <div className="text-center h4 mt-3 text-light">
           Signed up successfully, Proceed to{' '}
           <button className="btn">
             <Link to="/login">Login</Link>
           </button>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
