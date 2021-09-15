@@ -17,7 +17,7 @@ const SignUp = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    
+
     axios
       .post('http://localhost:8080/users/signup', {
         username: formData.username,
@@ -34,7 +34,7 @@ const SignUp = () => {
       <div className="row">
         <form
           onSubmit={handleSubmit}
-          className="full-form col-sm-6 col-10 offset-sm-3 mt-3 offset-1 px-md-5 py-5"
+          className="full-form col-sm-6 col-10 offset-sm-3 mt-3 offset-1 px-md-5 py-5 px-3"
         >
           <h1 className="text-center">Sign Up</h1>
           <div className="mb-3">

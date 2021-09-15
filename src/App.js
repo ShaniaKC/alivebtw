@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.css';
 import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
-import SignUp from './SignUp';
-import Login from './Login';
+import SignUp from './components/SignUp';
+import Login from './components/Login';
 
 export default function App() {
   return (
