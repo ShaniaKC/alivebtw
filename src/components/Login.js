@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   return (
-    <div className="form-bg">
+    <div>
       <Navbar />
       <div className="container">
         <div className="row">
