@@ -69,7 +69,7 @@ const Login = () => {
           </div>
           <button className="btn btn-primary col-12 py-3 mt-1">Login</button>
           <p className="col-12 mt-3 mb-1 text-center">
-            Not yet a member? <Link to="/">SignUp</Link>
+            Not yet a member? <Link to="/signup">SignUp</Link>
           </p>
         </form>
       </div>
