@@ -36,7 +36,7 @@ const SignUp = () => {
   };
 
   return (
-    <div>
+    <div className="container-fluid">
       <Navbar />
       <div className="container">
         <div className="row">

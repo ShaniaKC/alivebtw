@@ -31,16 +31,16 @@ const Login = () => {
     // }&username=${formData.username}
     axios
       .post(
-        `http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/me`,
+        `http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin`,
         null,
         {
           params: {
             password: formData.password,
             username: formData.username
-          },
-          headers: {
-            Authorization: `Bearer ${token}`
           }
+          // headers: {
+          //   Authorization: `Bearer ${token}`
+          // }
         }
       )
       .then(res => {
@@ -53,7 +53,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="container-fluid">
       <Navbar />
       <div className="container">
         <div className="row">

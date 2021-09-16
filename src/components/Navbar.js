@@ -1,23 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
+  const toggleNav = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   return (
     <div className="row bg-white">
-      <div className="col-md-4 row">
-        <h5 className=" text-grey col-md-6 mt-2 px-2">ALIVE BOTSWANA</h5>
-        <nav className="navbar col-md-6">
-          <Link to="/" className="nav-item  active">
-            Home
-          </Link>
-          <Link to="/signup" className="nav-item ">
-            Sign Up
-          </Link>
-          <Link to="/login" className="nav-item ">
-            Login
-          </Link>
-        </nav>
-      </div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <a className="navbar-brand">ALIVE BOTSWANA</a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            onClick={toggleNav}
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+          <div
+            style={isCollapsed ? { display: 'none' } : { display: 'block' }}
+            className="collapse navbar-collapse"
+            id="navbarSupportedContent"
+            data-toggle="collapse"
+          >
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link to="/" className="nav-link" aria-current="page">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/login" className="nav-link" aria-current="page">
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/signup" className="nav-link" aria-current="page">
+                  Signup
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
   );
 };
