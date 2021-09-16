@@ -23,12 +23,6 @@ const Login = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    // eyJhbGciOiJIUzI1NiJ9
-    //   .eyJzdWIiOiJhZG1pbiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTYzMTc4NjE3NiwiZXhwIjoxNjMxNzg2NDc2fQ
-    //   .RvGsI3RjstSeFOQ0Zdt3se9fVreRGsEPuR_wby2xHSs;
-    // ?password=${
-    //   formData.password
-    // }&username=${formData.username}
     axios
       .post(
         `http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin`,
