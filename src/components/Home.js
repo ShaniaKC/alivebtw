@@ -10,7 +10,7 @@ const Home = () => {
         <div className="row">
           <div className="col-md-6 text-left mt-5">
             <h1 className="h1 mt-5">Alive Botswana</h1>
-            <p>Changing the future of health care</p>
+            <p className="lead">Changing the future of health care</p>
           </div>
           <img
             src="https://images.pexels.com/photos/5452221/pexels-photo-5452221.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
