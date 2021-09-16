@@ -22,19 +22,15 @@ const Login = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
+    // http://localhost:8080/users/signin
+    // http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin
     axios
-      .post(
-        `http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin`,
-        null,
-        {
-          params: {
-            password: formData.password,
-            username: formData.username
-          }
-          
+      .post(`http://localhost:8080/users/signin`, null, {
+        params: {
+          password: formData.password,
+          username: formData.username
         }
-      )
+      })
       .then(res => {
         setIsLoggedIn(true);
         console.log(res);
