@@ -18,7 +18,7 @@ const Login = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
+    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
     axios
       .post(
         'http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin',
@@ -29,6 +29,7 @@ const Login = () => {
       )
       .then(res => {
         setIsLoggedIn(true);
+        console.log(res.json());
       })
       .catch(err => {
         //Handle error
