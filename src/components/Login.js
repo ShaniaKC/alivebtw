@@ -45,12 +45,6 @@ const Login = () => {
       <Navbar />
       <div className="container">
         <div className="row">
-          <img
-            src="https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-            alt=""
-            height="480px"
-            className="col-md-6 img-responsive mt-4"
-          />
           <form
             onSubmit={handleSubmit}
             className="full-form col-md-5 col-10 mt-4 mx-auto px-md-5 py-5 px-3"
@@ -89,12 +83,18 @@ const Login = () => {
               Not yet a member? <Link to="/signup">SignUp</Link>
             </p>
           </form>
+          <img
+            src="https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            alt=""
+            height="480px"
+            className="col-md-6 img-responsive mt-4"
+          />
         </div>
-        {isLoggedIn && (
+        {/* {isLoggedIn && (
           <div className="text-center h4 mt-3 text-light">
             Logged in successfully
           </div>
-        )}
+        )} */}
         {/* {error !== '' && (
         <div className="text-center h4 mt-3 text-light">
           Couldn't Sign you in
