@@ -18,9 +18,8 @@ const SignUp = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
-    axios
-      .post('http://localhost:8080/users/signup', {
+   axios
+      .post('http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/', {
         username: formData.username,
         password: formData.password,
         email: formData.email

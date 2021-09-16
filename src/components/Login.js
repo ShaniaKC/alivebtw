@@ -20,10 +20,13 @@ const Login = () => {
     event.preventDefault();
 
     axios
-      .post('http://localhost:8080/users/signin', {
-        username: formData.username,
-        password: formData.password
-      })
+      .post(
+        'http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin',
+        {
+          username: formData.username,
+          password: formData.password
+        }
+      )
       .then(res => {
         setIsLoggedIn(true);
       })
