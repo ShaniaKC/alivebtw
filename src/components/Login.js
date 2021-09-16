@@ -38,9 +38,7 @@ const Login = () => {
             password: formData.password,
             username: formData.username
           }
-          // headers: {
-          //   Authorization: `Bearer ${token}`
-          // }
+          
         }
       )
       .then(res => {
