@@ -8,19 +8,19 @@ const Login = () => {
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     username: '',
-    password: ''
+    password: '',
   });
 
   const token = `eyJhbGciOiJIUzI1NiJ9
 .eyJzdWIiOiJhZG1pbiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTYzMTc4NjE3NiwiZXhwIjoxNjMxNzg2NDc2fQ
 .RvGsI3RjstSeFOQ0Zdt3se9fVreRGsEPuR_wby2xHSs`;
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData(formData => ({ ...formData, [name]: value }));
+    setFormData((formData) => ({ ...formData, [name]: value }));
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     // http://localhost:8080/users/signin
     // http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin
@@ -28,14 +28,14 @@ const Login = () => {
       .post(`http://localhost:8080/users/signin`, null, {
         params: {
           password: formData.password,
-          username: formData.username
-        }
+          username: formData.username,
+        },
       })
-      .then(res => {
+      .then((res) => {
         setIsLoggedIn(true);
         console.log(res);
       })
-      .catch(err => {
+      .catch((err) => {
         //Handle error
       });
   };
@@ -45,9 +45,15 @@ const Login = () => {
       <Navbar />
       <div className="container">
         <div className="row">
+          <img
+            src="https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            alt=""
+            height="480px"
+            className="col-md-6 img-responsive mt-4"
+          />
           <form
             onSubmit={handleSubmit}
-            className="full-form col-md-6 col-10 offset-md-3 offset-1 mt-5 px-md-5 py-5"
+            className="full-form col-md-5 col-10 mt-4 mx-auto px-md-5 py-5 px-3"
           >
             <h1 className="text-center">Login</h1>
             <div className="mb-3">
