@@ -10,7 +10,10 @@ const Login = () => {
     username: '',
     password: ''
   });
-  const form = useRef(null);
+
+  const token = `eyJhbGciOiJIUzI1NiJ9
+.eyJzdWIiOiJhZG1pbiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTYzMTc4NjE3NiwiZXhwIjoxNjMxNzg2NDc2fQ
+.RvGsI3RjstSeFOQ0Zdt3se9fVreRGsEPuR_wby2xHSs`;
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -19,32 +22,34 @@ const Login = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const data = new FormData(form.current);
-    fetch(
-      'http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin',
-      {
-        method: 'POST',
-        mode: 'cors',
-        body: data
-      }
-    )
-      .then(res => res.json())
-      .then(data => console.log(data));
-    // axios
-    //   .post(
-    //     'http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin',
-    //     {
-    //       username: formData.username,
-    //       password: formData.password
-    //     }
-    //   )
-    //   .then(res => {
-    //     setIsLoggedIn(true);
-    //     console.log(res.json());
-    //   })
-    //   .catch(err => {
-    //     //Handle error
-    //   });
+
+    // eyJhbGciOiJIUzI1NiJ9
+    //   .eyJzdWIiOiJhZG1pbiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTYzMTc4NjE3NiwiZXhwIjoxNjMxNzg2NDc2fQ
+    //   .RvGsI3RjstSeFOQ0Zdt3se9fVreRGsEPuR_wby2xHSs;
+    // ?password=${
+    //   formData.password
+    // }&username=${formData.username}
+    axios
+      .post(
+        `http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/me`,
+        null,
+        {
+          params: {
+            password: formData.password,
+            username: formData.username
+          },
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+      .then(res => {
+        setIsLoggedIn(true);
+        console.log(res);
+      })
+      .catch(err => {
+        //Handle error
+      });
   };
 
   return (
@@ -53,7 +58,6 @@ const Login = () => {
       <div className="container">
         <div className="row">
           <form
-            ref={form}
             onSubmit={handleSubmit}
             className="full-form col-md-6 col-10 offset-md-3 offset-1 mt-5 px-md-5 py-5"
           >

@@ -18,25 +18,37 @@ const SignUp = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-   axios
-      .post('http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/', {
-        username: formData.username,
-        password: formData.password,
-        email: formData.email
-      })
+    axios
+      .post(
+        'http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/',
+        null,
+        {
+          params: {
+            username: formData.username,
+            password: formData.password,
+            email: formData.email
+          }
+        }
+      )
       .then(res => {
         setIsSignedUp(true);
       });
   };
 
   return (
-    <div className="form-bg">
+    <div>
       <Navbar />
       <div className="container">
         <div className="row">
+          <img
+            src="https://images.pexels.com/photos/5452255/pexels-photo-5452255.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+            alt=""
+            height="360px"
+            className="col-md-6 img-responsive mt-4"
+          />
           <form
             onSubmit={handleSubmit}
-            className="full-form col-md-6 col-10 offset-md-3 mt-3 offset-1 px-md-5 py-5 px-3"
+            className="full-form col-md-5 col-10 mt-4 mx-auto px-md-5 py-5 px-3"
           >
             <h1 className="text-center">Sign Up</h1>
             <div className="mb-3">
