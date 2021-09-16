@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
@@ -10,6 +10,7 @@ const Login = () => {
     username: '',
     password: ''
   });
+  const form = useRef(null);
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -18,22 +19,32 @@ const Login = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-    axios
-      .post(
-        'http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin',
-        {
-          username: formData.username,
-          password: formData.password
-        }
-      )
-      .then(res => {
-        setIsLoggedIn(true);
-        console.log(res.json());
-      })
-      .catch(err => {
-        //Handle error
-      });
+    const data = new FormData(form.current);
+    fetch(
+      'http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin',
+      {
+        method: 'POST',
+        mode: 'cors',
+        body: data
+      }
+    )
+      .then(res => res.json())
+      .then(data => console.log(data));
+    // axios
+    //   .post(
+    //     'http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin',
+    //     {
+    //       username: formData.username,
+    //       password: formData.password
+    //     }
+    //   )
+    //   .then(res => {
+    //     setIsLoggedIn(true);
+    //     console.log(res.json());
+    //   })
+    //   .catch(err => {
+    //     //Handle error
+    //   });
   };
 
   return (
@@ -42,6 +53,7 @@ const Login = () => {
       <div className="container">
         <div className="row">
           <form
+            ref={form}
             onSubmit={handleSubmit}
             className="full-form col-md-6 col-10 offset-md-3 offset-1 mt-5 px-md-5 py-5"
           >
