@@ -1,9 +1,9 @@
 import React from 'react';
-import PatientInfoHeader from './maincomponents/PatientInfoHeader';
-import StationInfoHeader from './maincomponents/StationInfoHeader';
-import Sidebar from './maincomponents/Sidebar';
-import PatientScreenTile from './maincomponents/PatientScreenTile';
-import StationScreenTile from './maincomponents/StationScreenTile';
+import PatientInfoHeader from './PatientInfoHeader';
+import StationInfoHeader from './StationInfoHeader';
+import Sidebar from './Sidebar';
+import PatientScreenTile from './PatientScreenTile';
+import StationScreenTile from './StationScreenTile';
 
 const Main = () => {
   return (

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-import Popup from './minorcomponents/Popup';
+import Popup from '../minorcomponents/Popup';
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
