@@ -2,21 +2,22 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
+import Popup from './minorcomponents/Popup';
 
 const SignUp = () => {
   const [isSignedUp, setIsSignedUp] = useState(false);
   const [formData, setFormData] = useState({
     username: '',
     password: '',
-    email: ''
+    email: '',
   });
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData(formData => ({ ...formData, [name]: value }));
+    setFormData((formData) => ({ ...formData, [name]: value }));
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     //http://localhost:8080/users/signup
     // http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signup
@@ -25,10 +26,10 @@ const SignUp = () => {
         params: {
           username: formData.username,
           password: formData.password,
-          email: formData.email
-        }
+          email: formData.email,
+        },
       })
-      .then(res => {
+      .then((res) => {
         setIsSignedUp(true);
       });
   };
@@ -93,19 +94,15 @@ const SignUp = () => {
             </div>
 
             <button className="btn btn-primary col-12 py-3 mt-1">SignUp</button>
-            <p className="col-12 mt-3 mb-1 text-center">
-              Already a member? <Link to="/login">Login</Link>
-            </p>
+            <p className="col-12 mt-3 mb-1 text-center">Already a member?</p>
           </form>
         </div>
-        {/* {isSignedUp && (
-        <div className="text-center h4 mt-3 text-light">
-          Signed up successfully, Proceed to{' '}
-          <button className="btn">
-            <Link to="/login">Login</Link>
-          </button>
-        </div>
-      )} */}
+        {isSignedUp && (
+          <Popup
+            text={<p>Signed Up successfully</p>}
+            btn_text={<Link to="/login">Login</Link>}
+          />
+        )}
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import Popup from './minorcomponents/Popup';
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -86,11 +87,8 @@ const Login = () => {
             className="col-md-6 img-responsive mt-4"
           />
         </div>
-        {/* {isLoggedIn && (
-          <div className="text-center h4 mt-3 text-light">
-            Logged in successfully
-          </div>
-        )} */}
+        {isLoggedIn && <Popup text="Logged in successfully" />}
+
         {/* {error !== '' && (
         <div className="text-center h4 mt-3 text-light">
           Couldn't Sign you in
