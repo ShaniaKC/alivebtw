@@ -6,6 +6,7 @@ import Popup from './minorcomponents/Popup';
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState('');
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     username: '',
@@ -30,7 +31,7 @@ const Login = () => {
       })
       .then((res) => {
         setIsLoggedIn(true);
-        console.log(res);
+        setToken(res.data);
       })
       .catch((err) => {
         //Handle error

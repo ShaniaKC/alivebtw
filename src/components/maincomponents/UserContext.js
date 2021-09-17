@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 
-const A = () => {
+export const UserContext = createContext();
+
+export const UserContextProvider = () => {
   return <div />;
 };
-
-export default A;
