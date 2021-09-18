@@ -3,12 +3,9 @@ import { Link } from 'react-router-dom';
 
 const IconLink = (props) => {
   return (
-    <Link
-      className="row flex-d text-primary py-2 px-1 text-start"
-      to={props.to}
-    >
+    <Link className="row flex-d text-dark py-3 px-1" to={props.to}>
       <span className="col-2">{props.icon}</span>{' '}
-      <span className="col-10">{props.text}</span>
+      <span className="col-8 offset-1">{props.text}</span>
     </Link>
   );
 };

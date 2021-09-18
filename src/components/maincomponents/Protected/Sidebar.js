@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import IconLink from '../../minorcomponents/IconLinkGroup';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import UpdateIcon from '@mui/icons-material/Update';
@@ -11,6 +11,12 @@ import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 const Sidebar = () => {
   const [isHidden, setIsHidden] = useState(false);
 
+  useEffect(() => {
+    if (innerWidth <= 768) {
+      setIsHidden(true);
+    }
+  }, []);
+
   const hideSidebar = () => {
     setIsHidden(true);
   };
@@ -21,11 +27,12 @@ const Sidebar = () => {
   return (
     <React.Fragment>
       <div
-        className="col-sm-2 vh-100  border-primary bg-white border-top border-end border-5 text-end"
+        className="col-sm-4 col-md-2 min-vh-100 bg-white border-top border-end border-5"
         style={{ display: isHidden ? 'none' : 'block' }}
       >
         <button
-          className="btn-close pb-5"
+          className="btn-close pb-2 col-1 offset-11"
+          style={{ display: innerWidth <= 768 ? 'block' : 'none' }}
           onClick={hideSidebar}
           aria-label="Close"
         ></button>
@@ -42,7 +49,7 @@ const Sidebar = () => {
         <IconLink to="/visit" text="Visit" icon={<CreateOutlinedIcon />} />
       </div>
       <button
-        className="btn btn-primary col-1 text-white"
+        className="btn col-1 text-dark"
         style={{
           height: 'max-content',
           width: 'max-content',
@@ -51,6 +58,7 @@ const Sidebar = () => {
         onClick={showSidebar}
         aria-label="open"
       >
+        <span>SideBar </span>
         <MenuOpenIcon />
       </button>
     </React.Fragment>

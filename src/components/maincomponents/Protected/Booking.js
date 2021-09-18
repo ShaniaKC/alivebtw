@@ -1,7 +1,7 @@
 import React from 'react';
 
-function B() {
+const B = () => {
   return <div />;
-}
+};
 
 export default B;
