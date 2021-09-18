@@ -1,7 +1,7 @@
 import React from 'react';
 
 const B = () => {
-  return <div />;
-}
+  return <div> Visits </div>;
+};
 
 export default B;

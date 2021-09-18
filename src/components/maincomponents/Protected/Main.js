@@ -13,11 +13,11 @@ const Main = () => {
     <div className="container-fluid bg-white vh-100">
       <div className="row">
         <Sidebar />
-        <div className="col-md-10">
+        <div className="col-md-10" style={{ backgroundColor: '#d0d5da' }}>
           <Route path="/main/booking">
             <Booking />
           </Route>
-          <Route path="/main/document">
+          <Route path="/main/documents">
             <Document />
           </Route>
           <Route path="/main/medical">
