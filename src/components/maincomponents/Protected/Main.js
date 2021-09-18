@@ -14,26 +14,24 @@ const Main = () => {
       <div className="row">
         <Sidebar />
         <div className="col-md-10">
-          <Switch>
-            <Route path="/main/booking"  exact>
-              <Booking />
-            </Route>
-            <Route path="/main/document" exact>
-              <Document />
-            </Route>
-            <Route path="/main/medical" exact>
-              <Medical />
-            </Route>
-            <Route path="/main/patient" exact>
-              <Patient />
-            </Route>
-            <Route path="/main/resources" exact>
-              <Resources />
-            </Route>
-            <Route path="/main/visit" exact>
-              <Visit />
-            </Route>
-          </Switch>
+          <Route path="/main/booking">
+            <Booking />
+          </Route>
+          <Route path="/main/document">
+            <Document />
+          </Route>
+          <Route path="/main/medical">
+            <Medical />
+          </Route>
+          <Route path="/main/patient">
+            <Patient />
+          </Route>
+          <Route path="/main/resources">
+            <Resources />
+          </Route>
+          <Route path="/main/visit">
+            <Visit />
+          </Route>
         </div>
       </div>
     </div>
