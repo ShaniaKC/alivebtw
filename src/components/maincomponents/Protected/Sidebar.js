@@ -37,16 +37,24 @@ const Sidebar = () => {
           aria-label="Close"
         ></button>
 
-        <IconLink to="/patient" text="Patient" icon={<PersonAddAlt1Icon />} />
-        <IconLink to="/booking" text="Booking" icon={<UpdateIcon />} />
         <IconLink
-          to="/resources"
+          to="/main/patient"
+          text="Patient"
+          icon={<PersonAddAlt1Icon />}
+        />
+        <IconLink to="/main/booking" text="Booking" icon={<UpdateIcon />} />
+        <IconLink
+          to="/main/resources"
           text="Resources"
           icon={<BusinessCenterOutlinedIcon />}
         />
-        <IconLink to="/medical" text="Medical" icon={<MedicalServicesIcon />} />
-        <IconLink to="/documents" text="Documents" icon={<FolderIcon />} />
-        <IconLink to="/visit" text="Visit" icon={<CreateOutlinedIcon />} />
+        <IconLink
+          to="/main/medical"
+          text="Medical"
+          icon={<MedicalServicesIcon />}
+        />
+        <IconLink to="/main/documents" text="Documents" icon={<FolderIcon />} />
+        <IconLink to="/main/visit" text="Visit" icon={<CreateOutlinedIcon />} />
       </div>
       <button
         className="btn col-1 text-dark"

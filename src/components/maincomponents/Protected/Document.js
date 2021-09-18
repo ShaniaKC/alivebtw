@@ -1,7 +1,7 @@
 import React from 'react';
 
-const B = () => {
-  return <div />;
-}
+const Document = () => {
+  return <div>Document</div>;
+};
 
-export default B;
+export default Document;
