@@ -17,4 +17,4 @@ const Patient = () => {
   );
 };
 
-export default B;
+export default Patient;
