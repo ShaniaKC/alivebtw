@@ -27,8 +27,10 @@ const Sidebar = () => {
   return (
     <React.Fragment>
       <div
-        className="col-sm-4 col-md-2 min-vh-100 bg-white border-top border-end border-5"
-        style={{ display: isHidden ? 'none' : 'block' }}
+        className="col-sm-4 col-md-2 min-vh-100 bg-white border-top border-end border-5 "
+        style={{
+          display: isHidden ? 'none' : 'block',
+        }}
       >
         <button
           className="btn-close pb-2 col-1 offset-11"
