@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Search = (props) => {
   return (
@@ -18,7 +19,7 @@ const Search = (props) => {
           className="btn btn-primary "
           onClick={props.onClick}
         >
-          {props.btnText}
+          <SearchIcon />
         </button>
       </div>
     </form>
