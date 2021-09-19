@@ -6,8 +6,10 @@ import ButtonPrimary from '../../minorcomponents/ButtonPrimary';
 const B = () => {
   return (
     <Paper>
-      <ButtonPrimary text="Add new Patient" />
-      <Search btnText="Search for Patient" />
+      <div className="row">
+        <ButtonPrimary text="Add new Patient" className="col-3" />
+        <Search btnText="Search for Patient" className="col-6 offset-3" />
+      </div>
     </Paper>
   );
 };
