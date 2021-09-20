@@ -32,6 +32,7 @@ const SignUp = () => {
         case 200:
         case 201:
           data = await response.json();
+          setIsSignedUp(true);
           break;
         case 400:
         case 403:
