@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
 import SignUp from './components/maincomponents/SignUp';
 import Login from './components/maincomponents/Login';
 import Home from './components/maincomponents/Home';
-import Main from './components/maincomponents/Main';
+import Main from './components/maincomponents/Protected/Main';
 
 export default function App() {
   return (
