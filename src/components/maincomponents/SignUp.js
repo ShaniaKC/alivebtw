@@ -28,7 +28,7 @@ const SignUp = () => {
         body: JSON.stringify(formData),
         headers: { 'Content-Type': 'application/json' },
       });
-      //get different responses based on status
+      //get different responses based on status to display messages
       switch (response.status) {
         case 200:
         case 201:
