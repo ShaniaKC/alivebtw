@@ -7,8 +7,9 @@ const SignUp = () => {
   const [isSignedUp, setIsSignedUp] = useState(false);
   const [formData, setFormData] = useState({
     username: '',
-    password: '',
     email: '',
+    password: '',
+    roles: ['ROLE_ADMIN'],
   });
 
   const handleChange = (event) => {
@@ -22,22 +23,25 @@ const SignUp = () => {
     let data;
     let error;
     try {
-      const response = await fetch('http://localhost:8080/users/signup', {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const response = await fetch(
+        'http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signup',
+        {
+          method: 'POST',
+          body: JSON.stringify(formData),
+          headers: { Accept: '*/*', 'Content-Type': 'application/json' },
+        }
+      );
       //get different responses based on status to display messages
       switch (response.status) {
         case 200:
         case 201:
-          data = await response.json();
+          data = await response.body;
           setIsSignedUp(true);
           break;
         case 400:
         case 403:
         case 422:
-          error = response.message;
+          error = await response.message;
           break;
       }
     } catch (err) {
