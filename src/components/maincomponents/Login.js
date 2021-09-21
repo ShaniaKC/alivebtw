@@ -82,14 +82,13 @@ const Login = () => {
             </p>
           </form>
           <img
-            src="https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            src="https://i.ibb.co/R3QJLSt/pexels-tima-miroshnichenko-5452201.jpg"
             alt=""
-            height="480px"
+            height="480px" width="320px"
             className="col-md-6 img-responsive mt-4"
           />
         </div>
         {isLoggedIn && <Popup text="Logged in successfully" />}
-
         {/* {error !== '' && (
         <div className="text-center h4 mt-3 text-light">
           Couldn't Sign you in

@@ -9,6 +9,7 @@ const SignUp = () => {
     username: '',
     password: '',
     email: '',
+    roles: ["ROLE_ADMIN"]
   });
 
   const handleChange = (event) => {
