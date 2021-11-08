@@ -41,7 +41,7 @@ section:not(.paper,
 }
 
 .home {
-	background-image: linear-gradient(rgba(22, 22, 22, 0), rgba(22, 22, 22, .6)), url("/src/assets/images/pexels-negative-space-48604.jpg");
+	background-image: linear-gradient(rgba(22, 22, 22, 0), rgba(22, 22, 22, .6)), url("https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 	background-repeat: no-repeat;
 	background-size: cover;
 	min-height: 100vh;

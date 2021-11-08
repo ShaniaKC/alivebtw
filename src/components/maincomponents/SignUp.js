@@ -3,7 +3,6 @@ import { Redirect , Link} from 'react-router-dom';
 import Navbar from './Navbar';
 import { UserContext } from '../../utils/UserContext';
 import ErrorBox from '../minorcomponents/ErrorBox';
-import ImageAsset from '../../assets/images/pexels-photo-5452255.jpeg'
 import {ToastContainer} from 'react-toastify'
 
 const SignUp = () => {
@@ -15,7 +14,7 @@ const SignUp = () => {
       <div className="container">
         <div className="row">
           <img
-            src={ImageAsset}
+            src="https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt=""
             height="360px"
             className="col-md-6 img-responsive mt-4"
