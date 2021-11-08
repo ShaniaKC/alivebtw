@@ -1,2 +1,13 @@
-export const LOGIN = 'LOGIN';
-export const LOGOUT = 'LOGOUT';
+
+export const ACTION_TYPES = {
+    LOGIN: 'LOGIN',
+    LOGOUT: 'LOGOUT',
+    AUTH: 'AUTH',
+    REFRESH: 'REFRESH',
+    ONCHANGE: 'ONCHANGE',
+    SIGNUP: 'SIGNUP',
+    SET_LOGIN_ERR: 'SET_LOGIN_ERR',
+    SET_SIGNUP_ERR: 'SET_SIGNUP_ERR',
+    SET_MINIPLAYER: 'SET_MINIPLAYER',
+    SHOWCALL: 'SHOWCALL'
+}
