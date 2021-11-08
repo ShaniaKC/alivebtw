@@ -1,19 +1,20 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 import { UserContext } from '../../utils/UserContext';
 import ErrorBox from '../minorcomponents/ErrorBox';
-import {ToastContainer} from 'react-toastify'
-import ImageAsset from '../../assets/images/pexels-photo-5452201.jpeg'
-
-
-
+import { ToastContainer } from 'react-toastify';
 
 const Login = () => {
-
-  const { login, handleChange, AuthStatus, usernameState, passwordState, loginErr: errMessage } = useContext( UserContext )
-
+  const {
+    login,
+    handleChange,
+    AuthStatus,
+    usernameState,
+    passwordState,
+    loginErr: errMessage,
+  } = useContext(UserContext);
 
   return (
     <div className="container-fluid">
@@ -21,10 +22,10 @@ const Login = () => {
       <div className="container">
         <div className="row">
           <form
-            onSubmit={ login }
+            onSubmit={login}
             className="full-form col-md-5 col-10 mt-4 mx-auto px-md-5 py-5 px-3"
           >
-            { errMessage && <ErrorBox text={ errMessage } /> }
+            {errMessage && <ErrorBox text={errMessage} />}
             <h1 className="text-center">Login</h1>
             <div className="mb-3">
               <label htmlFor="username" className="form-label">
@@ -33,8 +34,8 @@ const Login = () => {
               <input
                 type="text"
                 name="username"
-                onChange={ handleChange }
-                value={ usernameState }
+                onChange={handleChange}
+                value={usernameState}
                 placeholder="John Doe Mann"
                 className="form-control py-3"
                 required
@@ -47,8 +48,8 @@ const Login = () => {
               <input
                 type="password"
                 name="password"
-                onChange={ handleChange }
-                value={ passwordState }
+                onChange={handleChange}
+                value={passwordState}
                 placeholder="*******"
                 className="form-control py-3"
                 required
@@ -60,7 +61,7 @@ const Login = () => {
             </p>
           </form>
           <img
-            src={ImageAsset}
+            src="https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?cs=srgb&dl=pexels-gustavo-fring-4173251.jpg&fm=jpg"
             alt=""
             height="480px"
             className="col-md-6 img-responsive mt-4"
@@ -68,7 +69,7 @@ const Login = () => {
         </div>
       </div>
       <ToastContainer />
-      { AuthStatus && <Redirect to="/main" />}
+      {AuthStatus && <Redirect to="/main" />}
     </div>
   );
 };

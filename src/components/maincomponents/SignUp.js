@@ -1,13 +1,20 @@
 import React, { useContext } from 'react';
-import { Redirect , Link} from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import { UserContext } from '../../utils/UserContext';
 import ErrorBox from '../minorcomponents/ErrorBox';
-import ImageAsset from '../../assets/images/pexels-photo-5452255.jpeg'
-import {ToastContainer} from 'react-toastify'
+import { ToastContainer } from 'react-toastify';
 
 const SignUp = () => {
-  const { signup, handleChange, AuthStatus, usernameState, passwordState, emailState, signupErr: errMessage } = useContext( UserContext )
+  const {
+    signup,
+    handleChange,
+    AuthStatus,
+    usernameState,
+    passwordState,
+    emailState,
+    signupErr: errMessage,
+  } = useContext(UserContext);
 
   return (
     <div className="container-fluid">
@@ -15,16 +22,16 @@ const SignUp = () => {
       <div className="container">
         <div className="row">
           <img
-            src={ImageAsset}
+            src="https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?cs=srgb&dl=pexels-gustavo-fring-4173251.jpg&fm=jpg"
             alt=""
             height="360px"
             className="col-md-6 img-responsive mt-4"
           />
           <form
-            onSubmit={ signup }
+            onSubmit={signup}
             className="full-form col-md-5 col-10 mt-4 mx-auto px-md-5 py-5 px-3"
           >
-            { errMessage && <ErrorBox text={ errMessage } /> }
+            {errMessage && <ErrorBox text={errMessage} />}
             <h1 className="text-center">Sign Up</h1>
             <div className="mb-3">
               <label htmlFor="username" className="form-label">
@@ -33,8 +40,8 @@ const SignUp = () => {
               <input
                 type="text"
                 name="username"
-                onChange={ handleChange }
-                value={ usernameState }
+                onChange={handleChange}
+                value={usernameState}
                 placeholder="John Doe Mann"
                 className="form-control py-3"
                 required
@@ -47,8 +54,8 @@ const SignUp = () => {
               <input
                 type="email"
                 name="email"
-                onChange={ handleChange }
-                value={ emailState }
+                onChange={handleChange}
+                value={emailState}
                 placeholder="user@email.com"
                 className="form-control py-3"
                 required
@@ -61,8 +68,8 @@ const SignUp = () => {
               <input
                 type="password"
                 name="password"
-                onChange={ handleChange }
-                value={ passwordState }
+                onChange={handleChange}
+                value={passwordState}
                 placeholder="*******"
                 className="form-control py-3"
                 required
@@ -70,12 +77,14 @@ const SignUp = () => {
             </div>
 
             <button className="btn btn-primary col-12 py-3 mt-1">SignUp</button>
-            <p className="col-12 mt-3 mb-1 text-center">Already a member? <Link to="/login/">Log In</Link></p>
+            <p className="col-12 mt-3 mb-1 text-center">
+              Already a member? <Link to="/login/">Log In</Link>
+            </p>
           </form>
         </div>
       </div>
       <ToastContainer />
-      { AuthStatus &&  <Redirect to="/main" />}
+      {AuthStatus && <Redirect to="/main" />}
     </div>
   );
 };
