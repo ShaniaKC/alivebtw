@@ -16,7 +16,7 @@ const Navbar = () =>
     <div className="row bg-white">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">ALIVE BOTSWANA</a>
+          <a className="navbar-brand" href="/">MIMI MEDECINE</a>
           <button
             className="navbar-toggler"
             type="button"
