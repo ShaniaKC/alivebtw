@@ -1,42 +1,19 @@
-import React, { useState, useRef } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-import Popup from '../minorcomponents/Popup';
+import { Redirect } from 'react-router-dom'
+import { UserContext } from '../../utils/UserContext';
+import ErrorBox from '../minorcomponents/ErrorBox';
+import {ToastContainer} from 'react-toastify'
+import ImageAsset from '../../assets/images/pexels-photo-5452201.jpeg'
+
+
+
 
 const Login = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [token, setToken] = useState('');
-  const [error, setError] = useState('');
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  });
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((formData) => ({ ...formData, [name]: value }));
-  };
+  const { login, handleChange, AuthStatus, usernameState, passwordState, loginErr: errMessage } = useContext( UserContext )
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // http://localhost:8080/users/signin
-    // http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signin
-    axios
-      .post(`http://localhost:8080/users/signin`, null, {
-        params: {
-          password: formData.password,
-          username: formData.username,
-        },
-      })
-      .then((res) => {
-        setIsLoggedIn(true);
-        setToken(res.data);
-      })
-      .catch((err) => {
-        //Handle error
-      });
-  };
 
   return (
     <div className="container-fluid">
@@ -44,9 +21,10 @@ const Login = () => {
       <div className="container">
         <div className="row">
           <form
-            onSubmit={handleSubmit}
+            onSubmit={ login }
             className="full-form col-md-5 col-10 mt-4 mx-auto px-md-5 py-5 px-3"
           >
+            { errMessage && <ErrorBox text={ errMessage } /> }
             <h1 className="text-center">Login</h1>
             <div className="mb-3">
               <label htmlFor="username" className="form-label">
@@ -55,8 +33,8 @@ const Login = () => {
               <input
                 type="text"
                 name="username"
-                onChange={handleChange}
-                value={formData.username}
+                onChange={ handleChange }
+                value={ usernameState }
                 placeholder="John Doe Mann"
                 className="form-control py-3"
                 required
@@ -69,8 +47,8 @@ const Login = () => {
               <input
                 type="password"
                 name="password"
-                onChange={handleChange}
-                value={formData.password}
+                onChange={ handleChange }
+                value={ passwordState }
                 placeholder="*******"
                 className="form-control py-3"
                 required
@@ -82,20 +60,15 @@ const Login = () => {
             </p>
           </form>
           <img
-            src="https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            src={ImageAsset}
             alt=""
             height="480px"
             className="col-md-6 img-responsive mt-4"
           />
         </div>
-        {isLoggedIn && <Popup text="Logged in successfully" />}
-
-        {/* {error !== '' && (
-        <div className="text-center h4 mt-3 text-light">
-          Couldn't Sign you in
-        </div>
-      )} */}
       </div>
+      <ToastContainer />
+      { AuthStatus && <Redirect to="/main" />}
     </div>
   );
 };

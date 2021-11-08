@@ -1,53 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Redirect , Link} from 'react-router-dom';
 import Navbar from './Navbar';
-import Popup from '../minorcomponents/Popup';
+import { UserContext } from '../../utils/UserContext';
+import ErrorBox from '../minorcomponents/ErrorBox';
+import ImageAsset from '../../assets/images/pexels-photo-5452255.jpeg'
+import {ToastContainer} from 'react-toastify'
 
 const SignUp = () => {
-  const [isSignedUp, setIsSignedUp] = useState(false);
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    roles: ['ROLE_ADMIN'],
-  });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((formData) => ({ ...formData, [name]: value }));
-  };
-  //http://localhost:8080/users/signup
-  // http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signup
-  async function handleSubmit(event) {
-    event.preventDefault();
-    let data;
-    let error;
-    try {
-      const response = await fetch(
-        'http://aliveserver-env.eba-g2b3jpif.eu-west-1.elasticbeanstalk.com:5000/users/signup',
-        {
-          method: 'POST',
-          body: JSON.stringify(formData),
-          headers: { Accept: '*/*', 'Content-Type': 'application/json' },
-        }
-      );
-      //get different responses based on status to display messages
-      switch (response.status) {
-        case 200:
-        case 201:
-          data = await response.body;
-          setIsSignedUp(true);
-          break;
-        case 400:
-        case 403:
-        case 422:
-          error = await response.message;
-          break;
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  const { signup, handleChange, AuthStatus, usernameState, passwordState, emailState, signupErr: errMessage } = useContext( UserContext )
 
   return (
     <div className="container-fluid">
@@ -55,15 +15,16 @@ const SignUp = () => {
       <div className="container">
         <div className="row">
           <img
-            src="https://images.pexels.com/photos/5452255/pexels-photo-5452255.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+            src={ImageAsset}
             alt=""
             height="360px"
             className="col-md-6 img-responsive mt-4"
           />
           <form
-            onSubmit={handleSubmit}
+            onSubmit={ signup }
             className="full-form col-md-5 col-10 mt-4 mx-auto px-md-5 py-5 px-3"
           >
+            { errMessage && <ErrorBox text={ errMessage } /> }
             <h1 className="text-center">Sign Up</h1>
             <div className="mb-3">
               <label htmlFor="username" className="form-label">
@@ -72,8 +33,8 @@ const SignUp = () => {
               <input
                 type="text"
                 name="username"
-                onChange={handleChange}
-                value={formData.username}
+                onChange={ handleChange }
+                value={ usernameState }
                 placeholder="John Doe Mann"
                 className="form-control py-3"
                 required
@@ -86,8 +47,8 @@ const SignUp = () => {
               <input
                 type="email"
                 name="email"
-                onChange={handleChange}
-                value={formData.email}
+                onChange={ handleChange }
+                value={ emailState }
                 placeholder="user@email.com"
                 className="form-control py-3"
                 required
@@ -100,8 +61,8 @@ const SignUp = () => {
               <input
                 type="password"
                 name="password"
-                onChange={handleChange}
-                value={formData.password}
+                onChange={ handleChange }
+                value={ passwordState }
                 placeholder="*******"
                 className="form-control py-3"
                 required
@@ -109,16 +70,12 @@ const SignUp = () => {
             </div>
 
             <button className="btn btn-primary col-12 py-3 mt-1">SignUp</button>
-            <p className="col-12 mt-3 mb-1 text-center">Already a member?</p>
+            <p className="col-12 mt-3 mb-1 text-center">Already a member? <Link to="/login/">Log In</Link></p>
           </form>
         </div>
-        {isSignedUp && (
-          <Popup
-            text={<p>Signed Up successfully</p>}
-            btn_text={<Link to="/login">Login</Link>}
-          />
-        )}
       </div>
+      <ToastContainer />
+      { AuthStatus &&  <Redirect to="/main" />}
     </div>
   );
 };

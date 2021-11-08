@@ -1,78 +1,128 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom'
+import ButtonLight from '../../minorcomponents/ButtonLight';
+import { useToggle } from '../../../utils/CustomHooks';
+import { UserContext } from '../../../utils/UserContext';
 import IconLink from '../../minorcomponents/IconLinkGroup';
-import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
-import UpdateIcon from '@mui/icons-material/Update';
-import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
-import FolderIcon from '@mui/icons-material/Folder';
-import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
-import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
-import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+import { PersonPlus, Clock, ShieldFillPlus, Folder2Open, Briefcase, CalendarPlus, CameraVideo, MenuApp } from 'react-bootstrap-icons'
+
+
 
 const Sidebar = () => {
-  const [isHidden, setIsHidden] = useState(false);
 
-  useEffect(() => {
-    if (innerWidth <= 768) {
-      setIsHidden(true);
-    }
-  }, []);
+  const [ isHidden, setIsHidden ] = useState( false );
 
-  const hideSidebar = () => {
-    setIsHidden(true);
-  };
-  const showSidebar = () => {
-    setIsHidden(false);
-  };
+  // useEffect( () => {
+  //   if ( window.innerWidth <= 768 )
+  //   { setIsHidden( true ); }
+  // }, [] );
+
+  // const hideSidebar = () => {
+  //   setIsHidden( true );
+  // };
+  // const showSidebar = () => {
+  //   setIsHidden( false );
+  // };
+
+
 
   return (
     <React.Fragment>
       <div
-        className="col-sm-4 col-md-2 min-vh-100 bg-white border-top border-end border-5 "
-        style={{
-          display: isHidden ? 'none' : 'block',
-        }}
+        className="col-md-2 bg-white min-vh-100 d-print-none"
+        // style={ {
+        //   display: isHidden ? 'none' : 'block',
+        // } }
       >
-        <button
-          className="btn-close pb-2 col-1 offset-11"
-          style={{ display: innerWidth <= 768 ? 'block' : 'none' }}
-          onClick={hideSidebar}
-          aria-label="Close"
-        ></button>
+        <div className="position-fixed col-md-2 row">
+          {/* <button
+            className="btn-close pb-2 col-1 offset-11"
+            style={ { display: window.innerWidth <= 768 ? 'block' : 'none' } }
+            onClick={ hideSidebar }
+            aria-label="Close"
+          ></button> */}
 
-        <IconLink
-          to="/main/patient"
-          text="Patient"
-          icon={<PersonAddAlt1Icon />}
-        />
-        <IconLink to="/main/booking" text="Booking" icon={<UpdateIcon />} />
-        <IconLink
-          to="/main/resources"
-          text="Resources"
-          icon={<BusinessCenterOutlinedIcon />}
-        />
-        <IconLink
-          to="/main/medical"
-          text="Medical"
-          icon={<MedicalServicesIcon />}
-        />
-        <IconLink to="/main/documents" text="Documents" icon={<FolderIcon />} />
-        <IconLink to="/main/visit" text="Visit" icon={<CreateOutlinedIcon />} />
+          <UserInfo />
+
+          <IconLink
+            to="/main/patient"
+            text="Patient"
+            icon={ <PersonPlus /> }
+          />
+          <IconLink to="/main/booking" text="Booking" icon={ <CalendarPlus /> } />
+          <IconLink
+            to="/main/resources"
+            text="Resources"
+            icon={ <Briefcase /> }
+          />
+          <IconLink
+            to="/main/medical"
+            text="Medical"
+            icon={ <ShieldFillPlus /> }
+          />
+          <IconLink to="/main/documents" text="Documents" icon={ <Folder2Open /> } />
+          <IconLink to="/main/visit" text="Visit" icon={ <Clock /> } />
+          <IconLink to="/main/call" text="Start Call" icon={ <CameraVideo /> } />
+
+        </div>
       </div>
-      <button
+
+      {/* Display open modal on small screens */ }
+      {/* <button
         className="btn col-1 text-dark"
-        style={{
+        style={ {
           height: 'max-content',
           width: 'max-content',
           display: isHidden ? 'block' : 'none',
-        }}
-        onClick={showSidebar}
+        } }
+        onClick={ showSidebar }
         aria-label="open"
       >
         <span>SideBar </span>
-        <MenuOpenIcon />
-      </button>
+        <MenuApp />
+      </button> */}
+
+
     </React.Fragment>
   );
 };
+
+
+const UserInfo = () => {
+  const { logout, usernameState, emailState } = useContext( UserContext );
+  const [ istoggled, setIsToggled ] = useToggle();
+
+
+  return (
+    <div className="btn-group mb-2">
+
+      <button
+        type="button"
+        className="btn btn-light">
+        <Link to="/main">
+          { usernameState }
+        </Link>
+      </button>
+
+
+      <button
+        type="button"
+        className="btn btn-light dropdown-toggle dropdown-toggle-split"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        onClick={ setIsToggled }
+      >
+        <span className="visually-hidden">Toggle Dropdown</span>
+      </button>
+
+      <ul
+        className="dropdown-menu mt-5"
+        style={ istoggled ? { display: 'block' } : { display: 'none' } }>
+        <li className="dropdown-item"><ButtonLight text="Logout" onClick={ logout } /></li>
+        <li className="dropdown-item">{ emailState }</li>
+      </ul>
+    </div>
+  )
+}
 
 export default Sidebar;

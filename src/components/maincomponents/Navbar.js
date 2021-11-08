@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
 
-  const toggleNav = () => {
-    setIsCollapsed(!isCollapsed);
+const Navbar = () =>
+{
+
+  const [ isCollapsed, setIsCollapsed ] = useState( true );
+
+  const toggleNav = () =>
+  {
+    setIsCollapsed( !isCollapsed );
   };
 
   return (
     <div className="row bg-white">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand">ALIVE BOTSWANA</a>
+          <a className="navbar-brand" href="/">ALIVE BOTSWANA</a>
           <button
             className="navbar-toggler"
             type="button"
-            onClick={toggleNav}
+            onClick={ toggleNav }
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
@@ -24,7 +28,7 @@ const Navbar = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div
-            style={isCollapsed ? { display: 'none' } : { display: 'block' }}
+            style={ isCollapsed ? { display: 'none' } : { display: 'block' } }
             className="collapse navbar-collapse"
             id="navbarSupportedContent"
             data-toggle="collapse"
